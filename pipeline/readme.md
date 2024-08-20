@@ -68,10 +68,10 @@ To complete these taks, below are the required methods to be implemented:
 
 1. **def \_\_init\_\_(self, `**kwargs`) -> None:**  
     This is the function to load and initialize the pipeline class configurations, where `kwargs` are keyword arguments and it contains the key-value pairs that are defined in the **pipeline_def.json**.
-2. **def load(self, `configs`: dict) -> None:**  
-    This function receives `configs` and loads the models.
-3. **def warm_up(self, `configs`: dict) -> None:**  
-    This function receives `configs` and runs the models the first time.
+2. **def load(self, configs) -> None:**  
+    This function loads the models.
+3. **def warm_up(self, configs) -> None:**  
+    This function run the models the first time.
 4. **def predict(self, `configs`: dict, `inputs`: dict) -> dict:**  
     This function receives the `inputs` and `configs`, make predictions, add annotations to the image, and returns the annotated image with the model results. This function must return a dictionary. See the details in section - [Pipeline Result Dictionary](#pipeline-result-dictionary).  
     Besides, It would be helpful for developers to define a unit test in the main function. Refer to the main function in the **sample_pipeline.py**. 
