@@ -133,7 +133,7 @@ services:
     environment:
       - TZ=utc
     volumes:
-      - model-manager:/app/models
+      - ./models:/app/data/models
     depends_on:
       api-gateway: 
         condition: service_healthy
@@ -163,7 +163,7 @@ services:
       - TZ=utc
     volumes:
       - ./pipeline/:/home/gadget/pipeline
-      - model-manager:/app/models
+      - ./models:/home/gadget/models
       - inline-storage:/app/data
     depends_on:
       api-gateway: 
@@ -269,7 +269,7 @@ services:
       - CLOUD_PROJECT_ID=${CLOUD_PROJECT_ID}
     volumes:
       - transfer-storage:/app/data/transfer
-      - model-manager:/app/data/models
+      - ./models:/app/data/models
 
   log-collector:
     container_name: gadget-log-collector
@@ -294,5 +294,4 @@ volumes:
   db_static_volume:
   vault-storage:
   user-volume:
-  model-manager:
  
