@@ -1,15 +1,16 @@
-# CHANGE PARENT IMAGE TO MEET MODEL NEEDS
-FROM  python:3.8.12-buster
+FROM nvcr.io/nvidia/pytorch:23.04-py3
+
 # Argument defition corresponding to Docker Compose
 ARG PACKAGE_VER
 ARG PYPI_SERVER
 
-WORKDIR /home/gadget
+WORKDIR /home/gadget/workspace
 
 # install dependecies
 COPY ./requirements.txt .
 RUN pip3 install -r requirements.txt
-RUN pip install torch
 
 
-RUN python3 -m pip install gadget_pipeline_server==$PACKAGE_VER --extra-index-url $PYPI_SERVER
+RUN python3 -m pip install gadget_pipeline_server==$PACKAGE_VER   --extra-index-url $PYPI_SERVER
+
+CMD gadget_pipeline_server
