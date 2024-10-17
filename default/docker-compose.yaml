@@ -54,16 +54,14 @@ services:
       api-gateway:
         condition: service_healthy
 
-  app-frontend:
-    container_name: gadget-app-frontend
-    command: tail -f /dev/null
-    image: node:18-alpine
-    restart: unless-stopped
-    ports:
-      - 80:80
+  app_frontend:
+    command: tail -F anything
+    build:
+      context: /home/trevor/fsp/gadget/app_frontend
     volumes:
       - /home/trevor/fsp/gadget/app_frontend:/usr/src/app
       - /usr/src/app/node_modules
+      - static-volume:/usr/src/app/public
     ports:
       - 5173:5173
 
