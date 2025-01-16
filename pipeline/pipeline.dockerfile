@@ -1,15 +1,13 @@
-FROM nvcr.io/nvidia/pytorch:23.04-py3
+FROM python:3.8.12-buster
 
 # Argument defition corresponding to Docker Compose
 ARG PACKAGE_VER
 ARG PYPI_SERVER
 
+RUN apt-get update
 WORKDIR /home/gadget/workspace
 
-# install dependecies
-COPY ./requirements.txt .
-RUN pip3 install -r requirements.txt
-
+ARG CACHEBUST=1
 
 RUN python3 -m pip install gadget_pipeline_server==$PACKAGE_VER   --extra-index-url $PYPI_SERVER
 

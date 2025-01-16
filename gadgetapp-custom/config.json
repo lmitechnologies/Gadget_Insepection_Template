@@ -2,19 +2,55 @@
     "version": 1,
     "configForms": {
         "sensor": {
-            "configs": ["verbose"]
+            "configs": ["log_level"]
         },
         "pipeline": {
-            "configs": []
         },
         "automation": {
-            "configs": []
         }
     },
     "body": [
         {
-            "columnSize": 10,
+            "columnSize": 3,
             "components": [
+                {
+                    "componentName": "PieChart",
+                    "topic": "pipeline/pipeline",
+                    "decisionKey": "color_data"
+                },
+                {
+                    "componentName": "Metric",
+                    "topic": "pipeline/pipeline",
+                    "metricName": "decision"
+                }
+            ]
+        },
+        {
+            "columnSize": 3,
+            "components": [
+                {
+                    "componentName": "BarChart",
+                    "topic": "pipeline/pipeline",
+                    "decisionKey": "decision"
+                },
+                {
+                    "componentName": "HistogramChart",
+                    "topic": "pipeline/pipeline",
+                    "decisionKey": "decision",
+                    "labelList": ["-1", "0", "1", "2", "3", "4"]
+                }
+            ]
+        },
+        {
+            "columnSize": 3,
+            "components": [
+                
+                {
+                    "componentName": "MultiLineChart",
+                    "topic": "pipeline/pipeline",
+                    "decisionKey": "pair_data",
+                    "historyLen": 20
+                },
                 {
                     "componentName": "ImageCanvas",
                     "topic": "pipeline/pipeline",
@@ -23,21 +59,38 @@
             ]
         },
         {
-            "columnSize": 2,
+            "columnSize": 3,
             "components": [
                 {
                     "componentName": "LineChart",
                     "topic": "pipeline/pipeline",
                     "decisionKey": "decision",
-                    "historyLen": 50
+                    "historyLen": 20
                 },
                 {
-                    "componentName": "HistogramChart",
+                    "componentName": "Table",
                     "topic": "pipeline/pipeline",
-                    "decisionKey": "decision",
-                    "labelList": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+                    "title": "Table",
+                    "displayName": "table_data"
                 }
             ]
         }
-    ]
+    ],
+    "metricRow": {
+        "show": true,
+        "content": [
+            {
+                "topic": "pipeline/pipeline",
+                "metricKey": "decision",
+                "label": "Name",
+                "cumulative": true
+            },
+            {
+                "topic": "pipeline/pipeline",
+                "metricKey": "temp",
+                "label": "Temp",
+                "cumulative": false
+            }
+        ]
+    }
 }

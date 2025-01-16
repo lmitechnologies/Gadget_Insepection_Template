@@ -1,5 +1,121 @@
 {
-    "configs_def":[
-
+    "configs_def": [
+        {
+            "name": "od_scan_engine_file",
+            "default_value": "/home/gadget/workspace/pipeline/trt/od/trained-inference-models/best.pt",
+            "comment": "YoloV8 TRT engine to locate the parts."
+        },
+        {
+            "name": "od_scan_class_map",
+            "default_value": "/home/gadget/workspace/pipeline/scan_class_map.json",
+            "comment": "YoloV8 TRT engine to locate the parts."
+        },
+        {
+            "name": "od_scan_configs",
+            "default_value": {
+                "model_configs": {
+                    "iou_threshold": 0.45 
+                },
+                "object_configs": {
+                    "left": {
+                        "confidence": 0.5
+                    },
+                    "center": {
+                        "confidence": 0.5
+                    },
+                    "right": {
+                        "confidence": 0.5
+                    }
+                }
+            },
+            "comment": "none"
+        },
+        {
+            "name": "ad_models",
+            "default_value": {
+                "ad_1-1": {
+                    "model_path": "/home/gadget/workspace/pipeline/trt/ad_models/ad_1-1/2025-01-10/model.pt",
+                    "model_configs": {
+                        "anom_score_threshold": 5,
+                        "anom_score_max": 12,
+                        "anom_size": 10
+                    }
+                },
+                "ad_2-3": {
+                    "model_path": "/home/gadget/workspace/pipeline/trt/ad_models/ad_2-3/2025-01-10/model.pt",
+                    "model_configs": {
+                        "anom_score_threshold": 15,
+                        "anom_score_max": 20,
+                        "anom_size": 10
+                    }
+                },
+                "ad_4-4": {
+                    "model_path": "/home/gadget/workspace/pipeline/trt/ad_models/ad_4-4/2025-01-10/model.pt",
+                    "model_configs": {
+                        "anom_score_threshold": 0,
+                        "anom_score_max": 20,
+                        "anom_size": 10
+                    }
+                },
+                "ad_5-10": {
+                    "model_path": "/home/gadget/workspace/pipeline/trt/ad_models/ad_5-10/2025-01-10/model.pt",
+                    "model_configs": {
+                        "anom_score_threshold": 15,
+                        "anom_score_max": 20,
+                        "anom_size": 10
+                    }
+                },
+                "ad_11-11": {
+                    "model_path": "/home/gadget/workspace/pipeline/trt/ad_models/ad_11-11/2025-01-10/model.pt",
+                    "model_configs": {
+                        "anom_score_threshold": 15,
+                        "anom_score_max": 20,
+                        "anom_size": 10
+                    }
+                },
+                "ad_12-52": {
+                    "model_path": "/home/gadget/workspace/pipeline/trt/ad_models/ad_12-52/2025-01-10/model.pt",
+                    "model_configs": {
+                        "anom_score_threshold": 15,
+                        "anom_score_max": 20,
+                        "anom_size": 10
+                    }
+                },
+                "ad_53-53": {
+                    "model_path": "/home/gadget/workspace/pipeline/trt/ad_models/ad_53-53/2025-01-10/model.pt",
+                    "model_configs": {
+                        "anom_score_threshold": 15,
+                        "anom_score_max": 20,
+                        "anom_size": 10
+                    }
+                },
+                "ad_54-55": {
+                    "model_path": "/home/gadget/workspace/pipeline/trt/ad_models/ad_54-55/2025-01-10/model.pt",
+                    "model_configs": {
+                        "anom_score_threshold": 15,
+                        "anom_score_max": 20,
+                        "anom_size": 10
+                    }
+                },
+                "ad_56-56": {
+                    "model_path": "/home/gadget/workspace/pipeline/trt/ad_models/ad_56-56/2025-01-10/model.pt",
+                    "model_configs": {
+                        "anom_score_threshold": 15,
+                        "anom_score_max": 20,
+                        "anom_size": 10
+                    }
+                }
+            },
+            "comment": "none"
+        },
+        {
+            "name": "part_id",
+            "default_value": ""
+        },
+        {
+            "name": "test_mode",
+            "default_value": false,
+            "comment": "local testing mode. Change to false for production."
+        }
     ]
 }
